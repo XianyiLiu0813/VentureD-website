@@ -12,17 +12,12 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <VDLogo size={40} id="footer" />
-            <div className="mt-3 leading-tight">
-              <div className="font-black text-sm tracking-tight">VENTURED</div>
-              <div className="font-black text-sm tracking-tight" style={{ color: "#f97316" }}>
-                HACKATHON
-              </div>
+            <VDLogo size={42} id="footer" showTagline={false} dark={true} />
+            <div className="mt-4 leading-tight">
+              <div className="font-black text-sm tracking-tight">VENTURE<span style={{ color: "#f97316" }}>D</span></div>
+              <div className="font-black text-sm tracking-tight text-gray-400">HACKATHON</div>
             </div>
-            <p
-              className="text-gray-400 text-sm mt-2 italic"
-              style={{ fontFamily: "var(--font-dancing), cursive" }}
-            >
+            <p className="text-gray-500 text-xs mt-3 italic" style={{ fontFamily: "var(--font-dancing), cursive" }}>
               Agent for the Real World
             </p>
           </div>
