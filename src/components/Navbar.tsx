@@ -21,10 +21,10 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100 shadow-sm">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 shrink-0">
+        <Link href="/" className="flex items-center gap-3 shrink-0">
           <VDLogo size={36} id="nav" />
           <span className="text-base font-black text-[#0f0e2a] tracking-tight hidden sm:block">
-            Venture<span style={{ color: "#f97316" }}>D</span>
+            Venture<span style={{ background: "linear-gradient(135deg,#f97316,#ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>D</span>
           </span>
         </Link>
 

@@ -1,56 +1,61 @@
 interface VDLogoProps {
   size?: number;
   id?: string;
+  showTagline?: boolean;
 }
 
-export default function VDLogo({ size = 40, id = "logo" }: VDLogoProps) {
+export default function VDLogo({ size = 40, id = "logo", showTagline = false }: VDLogoProps) {
   const gradId = `vd-grad-${id}`;
-  return (
+
+  const mark = (
     <svg
       width={size}
-      height={size * 0.75}
-      viewBox="0 0 80 60"
+      height={Math.round(size * 72 / 94)}
+      viewBox="-3 -4 100 76"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
-        <linearGradient id={gradId} x1="0" y1="0" x2="80" y2="60" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#7c3aed" />
-          <stop offset="0.5" stopColor="#4f46e5" />
-          <stop offset="1" stopColor="#3b82f6" />
+        <linearGradient id={gradId} x1="0" y1="0" x2="92" y2="0" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#3B48E0" />
+          <stop offset="100%" stopColor="#7B2FBE" />
         </linearGradient>
       </defs>
-
-      {/* Left arm of V */}
-      <line
-        x1="6" y1="8"
-        x2="30" y2="52"
+      {/* V stroke: smooth curve from upper-left, dips down, sweeps back up to upper-right */}
+      <path
+        d="M 5,5 C 5,76 64,78 68,20"
         stroke={`url(#${gradId})`}
-        strokeWidth="8"
+        strokeWidth="11"
         strokeLinecap="round"
-      />
-
-      {/* Right arm of V (meets circle at lower-left of O) */}
-      <line
-        x1="30" y1="52"
-        x2="50" y2="20"
-        stroke={`url(#${gradId})`}
-        strokeWidth="8"
-        strokeLinecap="round"
-      />
-
-      {/* O — circle ring, gap at bottom-left where V arm meets it */}
-      <circle
-        cx="62"
-        cy="22"
-        r="14"
-        stroke={`url(#${gradId})`}
-        strokeWidth="8"
         fill="none"
-        strokeLinecap="round"
-        strokeDasharray="74 14"
-        strokeDashoffset="10"
+      />
+      {/* O circle */}
+      <circle
+        cx="70"
+        cy="20"
+        r="19"
+        stroke={`url(#${gradId})`}
+        strokeWidth="11"
+        fill="none"
       />
     </svg>
+  );
+
+  if (!showTagline) return mark;
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+        {mark}
+        <span style={{ fontSize: size * 0.75, fontWeight: 900, letterSpacing: "-0.01em", color: "#0f0e2a", lineHeight: 1 }}>
+          VentureD
+        </span>
+      </div>
+      <div style={{ fontSize: size * 0.27, letterSpacing: "0.16em", fontWeight: 400, display: "flex", alignItems: "center", gap: "0.35em" }}>
+        <span style={{ color: "#6366f1" }}>—</span>
+        <span style={{ color: "#1a1a2e" }}>创意穿出地球</span>
+        <span style={{ color: "#6366f1" }}>—</span>
+      </div>
+    </div>
   );
 }

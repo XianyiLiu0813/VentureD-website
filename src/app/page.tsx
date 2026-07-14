@@ -562,7 +562,7 @@ export default function HomePage() {
       </section>
 
       {/* ── FIVE CORE EXPERIENCES ── */}
-      <section className="py-16 px-6 bg-[#f5f3ff]">
+      <section className="py-16 px-6 bg-[#ece8ff]">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10">
           <div className="lg:w-48 shrink-0">
             <h2 className="text-2xl font-black text-[#0f0e2a] leading-tight">五大核心体验</h2>
@@ -639,7 +639,7 @@ export default function HomePage() {
       </section>
 
       {/* ── WHY CHOOSE VENTURED ── */}
-      <section className="py-16 px-6 bg-[#f5f3ff]">
+      <section className="py-16 px-6 bg-[#ece8ff]">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-black text-[#0f0e2a] mb-8">为什么选择 VentureD?</h2>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
