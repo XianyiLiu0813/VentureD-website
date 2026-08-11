@@ -528,7 +528,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
-                day: "Day 1", date: t("08.27 周三", "08.27 Wed"), label: t("开幕 · 组队 · 启动", "Opening · Teams · Kickoff"), color: "#6366f1",
+                day: "Day 1", date: t("08.27 周四", "08.27 Thu"), label: t("开幕 · 组队 · 启动", "Opening · Teams · Kickoff"), color: "#6366f1",
                 timelineItems: [
                   { time: "09:00", event: t("签到 & 开幕式", "Check-in & Opening Ceremony"), icon: "🎉" },
                   { time: "10:00", event: t("灵感分享 & 技术体验", "Idea Sharing & Tech Experience"), icon: "💡" },
@@ -536,7 +536,7 @@ export default function HomePage() {
                 ],
               },
               {
-                day: "Day 2", date: t("08.28 周四", "08.28 Thu"), label: t("冲刺 · 开发 · 狂欢", "Sprint · Build · Party"), color: "#f97316",
+                day: "Day 2", date: t("08.28 周五", "08.28 Fri"), label: t("冲刺 · 开发 · 狂欢", "Sprint · Build · Party"), color: "#f97316",
                 timelineItems: [
                   { time: "00:00", event: t("项目开发 & 导师辅导", "Project Dev & Mentor Support"), icon: "💻" },
                   { time: "19:00", event: t("Dream Disco 派对之夜", "Dream Disco Party Night"), icon: "🪩" },
@@ -544,7 +544,7 @@ export default function HomePage() {
                 ],
               },
               {
-                day: "Day 3", date: t("08.29 周五", "08.29 Fri"), label: t("Demo · 颁奖 · 闭幕", "Demo · Awards · Closing"), color: "#10b981",
+                day: "Day 3", date: t("08.29 周六", "08.29 Sat"), label: t("Demo · 颁奖 · 闭幕", "Demo · Awards · Closing"), color: "#10b981",
                 timelineItems: [
                   { time: "00:00", event: t("最后冲刺 & 提交", "Final Sprint & Submission"), icon: "⏰" },
                   { time: "13:00", event: t("Final Demo Day 展示", "Final Demo Day"), icon: "🏆" },
