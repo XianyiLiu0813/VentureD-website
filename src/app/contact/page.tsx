@@ -28,9 +28,18 @@ export default function ContactPage() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    const res = await fetch("https://formspree.io/f/xoeadjra", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(form),
+    });
+    setSubmitting(false);
+    if (res.ok) setSubmitted(true);
   };
 
   return (
@@ -205,10 +214,11 @@ export default function ContactPage() {
                   </div>
                   <button
                     type="submit"
-                    className="w-full py-4 rounded-full text-white font-bold text-base shadow-lg hover:opacity-90 transition-all"
+                    disabled={submitting}
+                    className="w-full py-4 rounded-full text-white font-bold text-base shadow-lg hover:opacity-90 transition-all disabled:opacity-60"
                     style={{ background: "linear-gradient(135deg, #f97316, #ef4444)" }}
                   >
-                    {t("发送消息 →", "Send Message →")}
+                    {submitting ? t("发送中...", "Sending...") : t("发送消息 →", "Send Message →")}
                   </button>
                 </form>
               )}
