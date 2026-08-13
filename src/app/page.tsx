@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
+import { useState, useEffect, useCallback } from "react";
 
 // ── Data ───────────────────────────────────────────────────────────────────
 
@@ -26,6 +27,15 @@ const partners = [
 
 export default function HomePage() {
   const { lang, t } = useLanguage();
+  const [slide, setSlide] = useState(0);
+  const totalSlides = 2;
+  const nextSlide = useCallback(() => setSlide((s) => (s + 1) % totalSlides), []);
+  const prevSlide = useCallback(() => setSlide((s) => (s - 1 + totalSlides) % totalSlides), []);
+  useEffect(() => {
+    const timer = setInterval(nextSlide, 6000);
+    return () => clearInterval(timer);
+  }, [nextSlide]);
+
   const regUrl = lang === "en"
     ? "https://docs.google.com/forms/d/e/1FAIpQLSd3heep5VmjnBZWjR-QzuAyf8qJ-_j00AOEUoyxyqoaYCzlTQ/viewform?usp=header"
     : "https://wj.qq.com/s2/27332848/a062/";
@@ -82,55 +92,103 @@ export default function HomePage() {
   return (
     <div className="bg-white text-[#0f0e2a]">
 
-      {/* ── HERO ── */}
-      <section
-        className="relative overflow-hidden"
-        style={{
-          minHeight: "100vh",
-          backgroundImage: "url('/images/bg-scene.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center center",
-        }}
-      >
-        <div className="absolute inset-0" style={{
-          background: [
-            "linear-gradient(to right, rgba(245,244,255,0.90) 0%, rgba(235,232,255,0.74) 38%, rgba(220,215,255,0.36) 60%, rgba(200,195,255,0.08) 80%, transparent 100%)",
-            "linear-gradient(to bottom, rgba(255,255,255,0.12) 0%, transparent 40%)",
-          ].join(", "),
-        }} />
-        <div className="relative z-10 max-w-7xl mx-auto px-8 flex flex-col justify-center" style={{ minHeight: "100vh", paddingTop: "100px", paddingBottom: "80px" }}>
-          <div className="max-w-[600px]">
-            <div className="mb-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest"
-              style={{ background: "rgba(99,102,241,0.12)", border: "1px solid rgba(99,102,241,0.30)", color: "#4f46e5", backdropFilter: "blur(8px)" }}>
-              2026.08.27 – 08.29 &nbsp;·&nbsp; {t("中国·杭州", "Hangzhou, China")}
+      {/* ── HERO CAROUSEL ── */}
+      <div className="relative overflow-hidden" style={{ minHeight: "100vh" }}>
+        <div className="flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${slide * 100}%)`, minHeight: "100vh" }}>
+
+          {/* Slide 1: VentureD */}
+          <section className="relative shrink-0 w-full overflow-hidden"
+            style={{ minHeight: "100vh", backgroundImage: "url('/images/bg-scene.jpg')", backgroundSize: "cover", backgroundPosition: "center center" }}>
+            <div className="absolute inset-0" style={{ background: ["linear-gradient(to right, rgba(245,244,255,0.90) 0%, rgba(235,232,255,0.74) 38%, rgba(220,215,255,0.36) 60%, rgba(200,195,255,0.08) 80%, transparent 100%)", "linear-gradient(to bottom, rgba(255,255,255,0.12) 0%, transparent 40%)"].join(", ") }} />
+            <div className="relative z-10 max-w-7xl mx-auto px-8 flex flex-col justify-center" style={{ minHeight: "100vh", paddingTop: "100px", paddingBottom: "80px" }}>
+              <div className="max-w-[600px]">
+                <div className="mb-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest"
+                  style={{ background: "rgba(99,102,241,0.12)", border: "1px solid rgba(99,102,241,0.30)", color: "#4f46e5", backdropFilter: "blur(8px)" }}>
+                  2026.08.27 – 08.29 &nbsp;·&nbsp; {t("中国·杭州", "Hangzhou, China")}
+                </div>
+                <h1 className="font-black leading-[0.86] tracking-tight mb-6" style={{ fontSize: "clamp(3.8rem, 10.5vw, 9rem)" }}>
+                  <span className="block text-[#1a1760]">VENTURE<span style={{ background: "linear-gradient(135deg,#f97316,#ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>D</span></span>
+                  <span className="block text-[#1a1760]">HACKATHON</span>
+                </h1>
+                <p className="mb-2" style={{ fontFamily: "var(--font-dancing), cursive", fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)", color: "#6366f1" }}>Agent for the Real World</p>
+                <p className="font-semibold mb-10 tracking-wider text-base text-[#4f46e5]/60">{t("— 让 Agent 进入真实世界", "— Agents Entering the Real World")}</p>
+                <div className="flex flex-wrap gap-4">
+                  <a href={regUrl} target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-white font-bold text-sm shadow-xl hover:opacity-90 hover:-translate-y-0.5 transition-all"
+                    style={{ background: "linear-gradient(135deg, #f97316, #ef4444)", boxShadow: "0 8px 32px rgba(249,115,22,0.35)" }}>
+                    {t("立即报名 →", "Apply Now →")}
+                  </a>
+                  <Link href="/about" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-sm transition-all hover:-translate-y-0.5"
+                    style={{ border: "2px solid rgba(99,102,241,0.40)", color: "#4338ca", background: "rgba(255,255,255,0.55)", backdropFilter: "blur(8px)" }}>
+                    {t("了解更多 ↓", "Learn More ↓")}
+                  </Link>
+                </div>
+              </div>
             </div>
-            <h1 className="font-black leading-[0.86] tracking-tight mb-6" style={{ fontSize: "clamp(3.8rem, 10.5vw, 9rem)" }}>
-              <span className="block text-[#1a1760]">VENTURE
-                <span style={{ background: "linear-gradient(135deg,#f97316,#ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>D</span>
-              </span>
-              <span className="block text-[#1a1760]">HACKATHON</span>
-            </h1>
-            <p className="mb-2" style={{ fontFamily: "var(--font-dancing), cursive", fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)", color: "#6366f1" }}>
-              Agent for the Real World
-            </p>
-            <p className="font-semibold mb-10 tracking-wider text-base text-[#4f46e5]/60">
-              {t("— 让 Agent 进入真实世界", "— Agents Entering the Real World")}
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <a href={regUrl} target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-white font-bold text-sm shadow-xl hover:opacity-90 hover:-translate-y-0.5 transition-all"
-                style={{ background: "linear-gradient(135deg, #f97316, #ef4444)", boxShadow: "0 8px 32px rgba(249,115,22,0.35)" }}>
-                {t("立即报名 →", "Apply Now →")}
-              </a>
-              <Link href="/about"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-sm transition-all hover:-translate-y-0.5"
-                style={{ border: "2px solid rgba(99,102,241,0.40)", color: "#4338ca", background: "rgba(255,255,255,0.55)", backdropFilter: "blur(8px)" }}>
-                {t("了解更多 ↓", "Learn More ↓")}
-              </Link>
+          </section>
+
+          {/* Slide 2: GOAI */}
+          <section className="relative shrink-0 w-full overflow-hidden"
+            style={{ minHeight: "100vh", background: "linear-gradient(135deg, #050e4a 0%, #0a1a6e 35%, #0e2580 65%, #06145a 100%)" }}>
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              {[
+                { s: 22,  top: "12%", right: "46%", c: "#22d3ee" }, { s: 42, top: "28%", right: "40%", c: "#4ade80" },
+                { s: 68,  top: "44%", right: "32%", c: "#86efac" }, { s: 110, top: "52%", right: "20%", c: "#fbbf24" },
+                { s: 150, top: "36%", right: "6%",  c: "#fb923c" }, { s: 90, top: "68%", right: "2%",  c: "#f87171" },
+                { s: 36,  top: "8%",  right: "26%", c: "#a3e635" }, { s: 18, top: "72%", right: "38%", c: "#34d399" },
+                { s: 55,  top: "18%", right: "14%", c: "#60a5fa" }, { s: 30, top: "60%", right: "46%", c: "#fde68a" },
+                { s: 70,  top: "78%", right: "12%", c: "#c084fc" }, { s: 25, top: "85%", right: "30%", c: "#22d3ee" },
+              ].map((c, i) => (
+                <div key={i} className="absolute rounded-full" style={{ width: c.s, height: c.s, top: c.top, right: c.right, background: c.c, opacity: 0.82, filter: "blur(0.8px)" }} />
+              ))}
             </div>
-          </div>
+            <a href="https://www.goaihz.com/?channel=vd" target="_blank" rel="noopener noreferrer"
+              className="relative z-10 flex flex-col justify-center max-w-7xl mx-auto px-8"
+              style={{ minHeight: "100vh", paddingTop: "100px", paddingBottom: "80px" }}>
+              <div className="max-w-[620px]">
+                <div className="flex items-center gap-3 mb-10">
+                  <span className="text-white font-black text-3xl tracking-tight">G</span>
+                  <div className="w-9 h-9 rounded-full flex items-center justify-center shrink-0"
+                    style={{ background: "conic-gradient(from 0deg, #22d3ee, #4ade80, #fbbf24, #fb923c, #f87171, #c084fc, #22d3ee)" }}>
+                    <div className="rounded-full" style={{ width: "18px", height: "18px", background: "#0a1a6e" }} />
+                  </div>
+                  <span className="text-white font-black text-3xl tracking-tight">AI</span>
+                  <div className="ml-2 border-l border-white/25 pl-3">
+                    <div className="text-white/70 text-xs font-semibold leading-tight">世界人工智能</div>
+                    <div className="text-white/70 text-xs font-semibold leading-tight">开源大赛</div>
+                    <div className="text-white/40 text-[10px] mt-0.5">Global Open-source AI Challenge</div>
+                  </div>
+                </div>
+                <h2 className="text-white font-black leading-tight mb-3" style={{ fontSize: "clamp(2.8rem, 8vw, 6rem)" }}>
+                  {t("世界人工智能", "Global Open-source")}<br />{t("开源大赛", "AI Challenge")}
+                </h2>
+                <p className="text-white font-bold text-xl mb-2" style={{ opacity: 0.85 }}>Global Open-source AI Challenge</p>
+                <p className="mb-10 text-base font-semibold" style={{ color: "rgba(163,230,53,0.9)" }}>{t("开放 · 共享 · 共建", "Open · Share · Build")}</p>
+                <div className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-[#0a1a6e] text-sm hover:opacity-90 transition-all"
+                  style={{ background: "linear-gradient(135deg, #a3e635, #4ade80)", boxShadow: "0 8px 32px rgba(163,230,53,0.35)" }}>
+                  {t("立即报名 →", "Register Now →")}
+                </div>
+              </div>
+            </a>
+          </section>
         </div>
-      </section>
+
+        {/* Arrows */}
+        <button onClick={prevSlide} aria-label="Previous" className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full flex items-center justify-center hover:scale-110 transition-all" style={{ background: "rgba(255,255,255,0.18)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.25)" }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button onClick={nextSlide} aria-label="Next" className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full flex items-center justify-center hover:scale-110 transition-all" style={{ background: "rgba(255,255,255,0.18)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.25)" }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        {/* Dots */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+          {[0, 1].map((i) => (
+            <button key={i} onClick={() => setSlide(i)} aria-label={`Slide ${i + 1}`} className="rounded-full transition-all duration-300"
+              style={{ width: slide === i ? "24px" : "8px", height: "8px", background: slide === i ? "white" : "rgba(255,255,255,0.4)" }} />
+          ))}
+        </div>
+      </div>
 
       {/* ── STATS BAR ── */}
       <section className="px-6 -mt-8 relative z-10">
