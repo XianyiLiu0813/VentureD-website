@@ -674,6 +674,72 @@ export default function HomePage() {
         <p className="text-center text-xs text-gray-400 mt-6">更多合作伙伴即将公布 · More partners coming soon</p>
       </section>
 
+      {/* ── GOAI PARTNER BANNER ── */}
+      <section className="py-8 px-6">
+        <div className="max-w-7xl mx-auto">
+          <a
+            href="https://www.goaihz.com/?channel=vd"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block rounded-3xl overflow-hidden relative group cursor-pointer hover:-translate-y-1 transition-all duration-300 shadow-xl hover:shadow-2xl"
+            style={{ background: "linear-gradient(135deg, #0a1a6e 0%, #1a3a9e 40%, #0e2580 70%, #06145a 100%)", minHeight: "220px" }}
+          >
+            {/* Floating circles decoration */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              {[
+                { size: 28, top: "15%", right: "42%", color: "#22d3ee", opacity: 0.85 },
+                { size: 48, top: "30%", right: "37%", color: "#4ade80", opacity: 0.9 },
+                { size: 72, top: "45%", right: "30%", color: "#86efac", opacity: 0.85 },
+                { size: 100, top: "55%", right: "20%", color: "#fbbf24", opacity: 0.9 },
+                { size: 130, top: "40%", right: "8%", color: "#fb923c", opacity: 0.85 },
+                { size: 80, top: "70%", right: "3%", color: "#f87171", opacity: 0.75 },
+                { size: 40, top: "10%", right: "28%", color: "#a3e635", opacity: 0.7 },
+                { size: 20, top: "75%", right: "35%", color: "#34d399", opacity: 0.65 },
+                { size: 55, top: "20%", right: "15%", color: "#60a5fa", opacity: 0.6 },
+                { size: 35, top: "62%", right: "44%", color: "#fde68a", opacity: 0.55 },
+              ].map((c, i) => (
+                <div key={i} className="absolute rounded-full"
+                  style={{ width: c.size, height: c.size, top: c.top, right: c.right, background: c.color, opacity: c.opacity, filter: "blur(0.5px)" }} />
+              ))}
+            </div>
+
+            <div className="relative z-10 px-10 py-10 flex flex-col justify-between h-full" style={{ minHeight: "220px" }}>
+              {/* Top: Logo */}
+              <div className="flex items-center gap-2 mb-6">
+                <div className="flex items-center gap-1">
+                  <span className="text-white font-black text-2xl tracking-tight">G</span>
+                  <div className="w-7 h-7 rounded-full flex items-center justify-center" style={{ background: "conic-gradient(#22d3ee, #4ade80, #fbbf24, #fb923c, #f87171, #22d3ee)" }}>
+                    <div className="w-3.5 h-3.5 rounded-full bg-[#0e2580]" />
+                  </div>
+                  <span className="text-white font-black text-2xl tracking-tight">AI</span>
+                </div>
+                <div className="ml-1 border-l border-white/30 pl-2">
+                  <div className="text-white/80 text-[10px] font-semibold leading-tight">世界人工智能</div>
+                  <div className="text-white/80 text-[10px] font-semibold leading-tight">开源大赛</div>
+                </div>
+              </div>
+
+              {/* Main content */}
+              <div className="max-w-lg">
+                <h3 className="text-white font-black leading-tight mb-1" style={{ fontSize: "clamp(1.6rem, 4vw, 2.4rem)" }}>
+                  {t("世界人工智能开源大赛", "Global Open-source AI Challenge")}
+                </h3>
+                <p className="text-white font-bold text-lg mb-1" style={{ opacity: 0.9 }}>
+                  {lang === "en" ? "Global Open-source AI Challenge" : "Global Open-source AI Challenge"}
+                </p>
+                <p className="text-white/60 text-sm mb-6">
+                  {t("开放 · 共享 · 共建", "Open · Share · Build")}
+                </p>
+                <div className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-sm text-[#0a1a6e] group-hover:scale-105 transition-transform"
+                  style={{ background: "linear-gradient(135deg, #a3e635, #4ade80)" }}>
+                  {t("立即报名 →", "Register Now →")}
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+
       {/* ── CTA BANNER with crystal decorations ── */}
       <section className="py-8 px-6 pb-24">
         <div className="max-w-7xl mx-auto">
