@@ -759,7 +759,7 @@ export default function HomePage() {
 
             <div className="relative max-w-2xl">
               <h2 className="text-4xl md:text-5xl font-black mb-4 leading-tight">
-                {t("准备好开启你的", "Ready to Start Your")}<br />{t("VentureD 之旅了吗？", "VentureD Journey?")}
+                {t("准备好开启你的", "Ready to Start Your")}<br />{t("VentureD Hackathon 之旅了吗？", "VentureD Hackathon Journey?")}
               </h2>
               <p className="text-indigo-200 text-base mb-10 leading-relaxed">
                 {t("加入全球青年创造者浪潮，推动 Agent 改变真实世界。", "Join the global wave of young creators — let AI Agents change the real world.")}
