@@ -10,16 +10,33 @@ const tracksMeta = [
   { num: "02", gradient: "linear-gradient(140deg, #0a1628 0%, #1e3a8a 50%, #0369a1 100%)", title: "Physical AI", partner: "宇树科技" },
   { num: "03", gradient: "linear-gradient(140deg, #1a0433 0%, #6d28d9 45%, #9d174d 100%)", title: "Deep Space", partner: "群核科技" },
   { num: "04", gradient: "linear-gradient(140deg, #1c0700 0%, #9a3412 50%, #dc2626 100%)", title: "Global Commerce", partner: "天识科技" },
+  { num: "05", gradient: "linear-gradient(140deg, #022c22 0%, #065f46 50%, #059669 100%)", title: "Healthcare", partner: "德适科技" },
 ];
 
 const partners = [
+  { name: "TiDB", img: "/images/partners/tidb.png" },
+  { name: "UNITREE 宇树科技", img: "/images/partners/unitree.svg" },
+  { name: "群核科技 MANYCORE", img: "/images/partners/manycore.png" },
+  { name: "天识科技 ANTLINKS", img: "/images/partners/antlinks.png" },
+  { name: "德适科技 DIAGENS", img: "/images/partners/diagens.png" },
+  { name: "HSBC 汇丰银行", img: "/images/partners/hsbc.png" },
+  { name: "浙江稠州商业银行", img: "/images/partners/chouzhou.png" },
+  { name: "中国联通 China Unicom", img: "/images/partners/china-unicom.png" },
+  { name: "HackQuest", img: "/images/partners/hackquest.png" },
+  { name: "Qoder", img: "/images/partners/qoder.png" },
+  { name: "Zion", img: "/images/partners/zion.png" },
+  { name: "AIPing", img: "/images/partners/aiping.png" },
+  { name: "知乎科技", img: "/images/partners/zhihu.png" },
+  { name: "Nebulon Ventures", img: "/images/partners/nebulon.png" },
+  { name: "EiC", img: "/images/partners/eic.png" },
+  { name: "春风智汇 OPC社区", img: "/images/partners/opc.png" },
+  { name: "荣晟文化科技", img: "/images/partners/rongsheng.png" },
+  { name: "美虎媒体 MEI HU MEDIA", img: "/images/partners/meihu.png" },
+  { name: "光秒 GUANG MIAO", img: "/images/partners/guangmiao.png" },
+  { name: "QClaw", img: "/images/partners/qclaw.png" },
   { name: "NTU Entrepreneurship Academy", img: "/images/partners/ntu.png" },
   { name: "深圳科创学院 Shenzhen InnoX", img: "/images/partners/shenzhen-innox.png" },
-  { name: "天识科技 ANTLINKS", img: "/images/partners/antlinks.png" },
-  { name: "群核科技 MANYCORE", img: "/images/partners/manycore.png" },
-  { name: "UNITREE", img: "/images/partners/unitree.svg" },
   { name: "浙江大学计算机学院", img: "/images/partners/zju.svg" },
-  { name: "TiDB", img: "/images/partners/tidb.png" },
   { name: "杭州全球青年人才中心", img: "/images/partners/hangzhou-global.webp" },
 ];
 
@@ -42,7 +59,7 @@ export default function HomePage() {
 
   const stats = [
     { icon: "⚡", value: "48H", label: t("极限创造", "Extreme Creation") },
-    { icon: "◈", value: "4", label: t("大赛道", "Tracks") },
+    { icon: "◈", value: "5", label: t("大赛道", "Tracks") },
     { icon: "◎", value: "80万+", label: t("奖金资源池", "Prize Pool") },
     { icon: "✦", value: "20+", label: t("顶尖导师", "Top Mentors") },
     { icon: "◆", value: t("杭州", "Hangzhou"), label: t("首届举办地", "Host City") },
@@ -70,6 +87,11 @@ export default function HomePage() {
         titleCn: t("全球商业", "Global Commerce"),
         desc: t("基于真实市场数据与出海场景，用 Agent 判断什么值得走向世界，重塑全球商业体验。", "Powered by real market data and global commerce scenarios — use Agents to judge what's worth taking to the world and reimagine global business."),
         tags: lang === "en" ? ["E-commerce", "Fintech", "Global", "AI Retail"] : ["E-commerce", "Fintech", "出海", "AI Retail"],
+      },
+      {
+        titleCn: t("医疗创新", "Healthcare"),
+        desc: t("面向真实医疗场景的开放挑战——与企业专家并肩，用 Agent 解决临床与健康领域的真实难题。", "Open challenges grounded in real medical scenarios — work alongside industry experts to tackle genuine problems in clinical and health domains with AI Agents."),
+        tags: lang === "en" ? ["Medical AI", "Clinical", "Healthcare", "Diagnostics"] : ["医疗AI", "临床", "健康科技", "诊断"],
       },
     ][i],
   }));
@@ -212,11 +234,11 @@ export default function HomePage() {
       <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
-            <p className="text-sm font-bold tracking-[0.2em] text-[#6366f1] uppercase mb-3">Four Tracks</p>
+            <p className="text-sm font-bold tracking-[0.2em] text-[#6366f1] uppercase mb-3">Five Tracks</p>
             <h2 className="text-5xl font-black text-[#0f0e2a] leading-tight mb-4">
-              <span className="gradient-text">4</span> {t("大真实世界赛道", "Real-World Tracks")}
+              <span className="gradient-text">5</span> {t("大真实世界赛道", "Real-World Tracks")}
             </h2>
-            <p className="text-gray-500 max-w-xl mx-auto">Hardware · Physical AI · Deep Space · Global Commerce</p>
+            <p className="text-gray-500 max-w-xl mx-auto">Hardware · Physical AI · Deep Space · Global Commerce · Healthcare</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {tracks.map((t) => (
@@ -683,7 +705,7 @@ export default function HomePage() {
               {[
                 { num: "48H", label: t("极限创造", "Extreme Creation"), sub: "Hackathon Hours" },
                 { num: "1000+", label: t("青年创造者", "Youth Creators"), sub: "Youth Creators" },
-                { num: "4", label: t("全球赛道", "Global Tracks"), sub: "Global Tracks" },
+                { num: "5", label: t("全球赛道", "Global Tracks"), sub: "Global Tracks" },
                 { num: "∞", label: t("无限可能", "Possibilities"), sub: "Possibilities" },
               ].map((stat, i) => (
                 <div

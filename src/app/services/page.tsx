@@ -95,6 +95,29 @@ const tracks = [
     ],
     tags: ["E-commerce", "Fintech", "出海", "AI Retail"],
   },
+  {
+    number: "05",
+    gradient: "from-[#059669] to-[#0d9488]",
+    accent: "linear-gradient(135deg, #059669, #0d9488)",
+    emoji: "🏥",
+    title: "Healthcare · 医疗创新",
+    subtitle: "用 Agent 解决真实医疗场景的真实难题",
+    partner: "德适科技",
+    partnerColor: "#059669",
+    desc: "面向真实医疗场景的开放挑战，与企业专家并肩，用 AI Agent 解决临床与健康领域中最真实的问题，让技术真正服务于人。",
+    features: [
+      "真实医疗问题开放挑战",
+      "企业专家驻场指导",
+      "临床场景数据与资源支持",
+      "医疗 AI 落地实践机会",
+    ],
+    prizes: [
+      "真实医疗问题开放挑战",
+      "企业专家驻场全程指导",
+      "实习 Offer 直通车",
+    ],
+    tags: ["医疗AI", "临床", "健康科技", "诊断"],
+  },
 ];
 
 const divisions = [
@@ -310,7 +333,7 @@ export default function ServicesPage() {
         >
           <div className="tag mx-auto mb-6">{t("赛道介绍", "Track Overview")}</div>
           <h1 className="text-5xl md:text-6xl font-black text-[#0f0e2a] mb-6 leading-tight">
-            <span className="gradient-text">{t("四大赛道", "4 Tracks")}</span> {t("全面解析", "Breakdown")}
+            <span className="gradient-text">{t("五大赛道", "5 Tracks")}</span> {t("全面解析", "Breakdown")}
           </h1>
           <p className="text-gray-600 text-xl max-w-2xl mx-auto">
             {t("2026.08.27–08.29 · 中国·杭州 · 48 小时极限创造", "2026.08.27–08.29 · Hangzhou, China · 48-Hour Extreme Creation")}
@@ -322,11 +345,11 @@ export default function ServicesPage() {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <div className="tag mx-auto mb-4">{t("四大赛道", "4 Tracks")}</div>
+            <div className="tag mx-auto mb-4">{t("五大赛道", "5 Tracks")}</div>
             <h2 className="text-4xl font-black text-[#0f0e2a] mb-4">
               VentureD <span className="gradient-text">{t("Hackathon 赛道", "Hackathon Tracks")}</span>
             </h2>
-            <p className="text-gray-500 max-w-xl mx-auto">Hardware · Physical AI · Deep Space · Global Commerce</p>
+            <p className="text-gray-500 max-w-xl mx-auto">Hardware · Physical AI · Deep Space · Global Commerce · Healthcare</p>
           </div>
           <div className="space-y-5">
             {tTracks.map((track, i) => (
